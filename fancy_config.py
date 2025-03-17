@@ -57,5 +57,4 @@ def read_data(key,file,die_on_error = True):
                             exit(78)
                         else:
                             return None
-                    ... #do something
     raise KeyError # Couldn't find the key
