@@ -1,4 +1,4 @@
-# .fconfig File Parser 1.0
+# .fconfig File Parser v1.0
 # Created by Patrick G. Karhoff [Github: Patric-k-k, Email]
 
 def to_data_type(data):
