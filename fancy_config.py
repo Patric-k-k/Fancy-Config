@@ -17,17 +17,45 @@ def to_data_type(data):
     
     return data
 
-def read_data(key,file):
+def read_data(key,file,die_on_error = True):
     with open(file,'r') as f:
         Rawdata = f.readlines()
     for i in Rawdata:
+        OriginalData = i
+        i = i + "|"
         if i[0] != "#":
             i.strip("\n")
             i = i.split("|")
             if i[0] == key:
-                i = i[1].split('<')
-                i = i[1]
-                i = i.split('>')
-                i = i[0]
-                return to_data_type(i)
+                if i[2] == "":
+                    i = i[1].split('<')
+                    i = i[1]
+                    i = i.split('>')
+                    i = i[0]
+                    return to_data_type(i)
+                else:
+                    WANTEDtype = i[1].lower()
+                    Data = i[2]
+                    Data = Data.split('<')
+                    Data = Data[1]
+                    Data = Data.split('>')
+                    Data = Data[0]
+                    try:
+                        if WANTEDtype == "int":
+                            return int(Data)
+                        elif WANTEDtype == "float":
+                            return float(Data)
+                        elif WANTEDtype == "bool":
+                            return Data.lower() == "true"
+                        elif WANTEDtype == "str":
+                            return Data
+                        else:
+                            raise TypeError(f"Type {WANTEDtype} not supported")
+                    except ValueError:
+                        print(f"Could not convert {Data} to {WANTEDtype}. Invalid config. Key: {key}. Line: {Rawdata.index(OriginalData)+1}")
+                        if die_on_error:
+                            exit(78)
+                        else:
+                            return None
+                    ... #do something
     raise KeyError # Couldn't find the key
