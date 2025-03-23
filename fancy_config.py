@@ -1,5 +1,5 @@
 # .fconfig File Parser v1.0
-# Created by Patrick G. Karhoff [Github: Patric-k-k, Email]
+# Created by Patrick G. Karhoff [Github: Patric-k-k]
 
 def to_data_type(data):
     if data.isdigit():
