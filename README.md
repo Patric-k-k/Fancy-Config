@@ -6,7 +6,12 @@ For copying all you need is LICENSE and fancy_config.py
 The other files are just there for example.
 
 ## Use via package
+`pip install fancyconfiglib`
+
 If you have it installed as a python package, you can do:
 ```python
-import fancy_config.fancy_config
+import fancyconfiglib
 ```
+
+## WIKI
+You can access the wiki at https://github.com/Patric-k-k/Fancy-Config/wiki
