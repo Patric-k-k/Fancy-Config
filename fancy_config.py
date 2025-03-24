@@ -1,4 +1,4 @@
-# .fconfig File Parser
+# .fconfig File Parser v1.1
 # Created by Patrick G. Karhoff [Github: Patric-k-k, Email]
 
 def to_data_type(data):
@@ -49,6 +49,14 @@ def read_data(key,file,die_on_error = True):
                             return Data.lower() == "true"
                         elif WANTEDtype == "str":
                             return Data
+                        elif WANTEDtype == "list":
+                            seperated = Data.split(",")
+                            for i in seperated:
+                                seperated[seperated.index(i)] = i.strip()
+                            return seperated
+                        elif WANTEDtype == "klist":
+                            seperated = Data.split(",")
+                            return seperated
                         else:
                             raise TypeError(f"Type {WANTEDtype} not supported")
                     except ValueError:
