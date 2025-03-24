@@ -10,3 +10,6 @@ If you have it installed as a python package, you can do:
 ```python
 import fancyconfiglib
 ```
+
+## WIKI
+You can access the wiki at https://github.com/Patric-k-k/Fancy-Config/wiki
